@@ -7,7 +7,7 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-
+// Mapper - 데이터를 분류하는 역할
 //1. Mapper클래스를 상속한다.
 //	=> mapper에 전달될 input데이터의 key, value타입과 mapper의 실행결과로 출력되는 output데이터의 key,value타입을 정의
 //2. map메서드를 오버라이딩해서 map작업을 수행하면서 처리할 내용을 구현

@@ -5,8 +5,8 @@
 	<property name="build-number" value="0" />
 	<property name="version" value="${major-version}.${minor-version}.${build-number}" />
 
-	<property name="company-name" value="multi" />
-	<property name="project-name" value="hadoop-examples" />
+	<property name="company-name" value="hadoop" />
+	<property name="project-name" value="mapred-examples" />
 	<property name="general-lib" value="${company-name}-${project-name}.jar" />
 	<property name="general-src" value="${company-name}-${project-name}-src.zip" />
 	
