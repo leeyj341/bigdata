@@ -14,17 +14,15 @@ public class AirMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 	@Override
 	protected void map(LongWritable key, Text value, Mapper<LongWritable, Text, Text, IntWritable>.Context context)
 			throws IOException, InterruptedException {
-		
+		// value는 한 줄을 읽어온 값 즉, 한 줄 당 map 메서드 한 개가 실행된다.
 		if(key.get() > 0) {
 			String[] line = value.toString().split(",");
 			
 			outputKey.set(line[1]);
 			String delay = line[15];
 			
-			if(!delay.equals("NA")) {
-				if(Integer.parseInt(delay) > 0) {
-					context.write(outputKey, outputVal);
-				}
+			if(!delay.equals("NA") && Integer.parseInt(delay) > 0) {
+				context.write(outputKey, outputVal);
 			}
 		}
 	}
