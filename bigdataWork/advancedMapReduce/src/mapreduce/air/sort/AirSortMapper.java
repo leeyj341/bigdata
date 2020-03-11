@@ -23,6 +23,7 @@ public class AirSortMapper extends Mapper<LongWritable, Text, CustomKey, IntWrit
 			if(!delay.equals("NA") && Integer.parseInt(delay) > 0) {
 				outputKey.setYear(line[0]);
 				outputKey.setMonth(new Integer(line[1]));
+				outputKey.setMapkey(key.get());
 				context.write(outputKey, outputVal);
 			}
 		}
