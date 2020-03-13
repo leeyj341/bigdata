@@ -1,0 +1,30 @@
+h1, span{background-color:white;}
+ul{font-size:8pt;text-align:center;}
+.title{text-decoration:bold}
+#weather{position:relative;margin:auto; width:524px; height:601px;
+			text-align:center;background-image:url('http://www.kma.go.kr/images/weather/main_new/map2015.png');}
+#location{background-color:white;}
+.po_seoul{position:absolute;left:230px;top:139px; z-index:3;}
+.po_incheon{position:absolute;left:171px;top:161px; z-index:3;}
+.po_suwon{position:absolute;left:215px;top:201px; z-index:3;}
+.po_chuncheon{position:absolute;left:291px;top:122px; z-index:3;}
+.po_gangreung{position:absolute;left:355px;top:128px; z-index:3;}
+.po_dokdo{position:absolute;left:470px;top:144px; z-index:3;}
+.po_baengnyeongdo{position:absolute;left:41px;top:154px; z-index:3;}
+.po_daejeoun{position:absolute;left:257px;top:299px; z-index:3;}
+.po_seosan{position:absolute;left:189px;top:252px; z-index:3;}
+.po_chungju{position:absolute;left:260px;top:234px; z-index:3;}
+.po_jeonju{position:absolute;left:221px;top:330px; z-index:3;}
+.po_gwangju{position:absolute;left:222px;top:399px; z-index:3;}
+.po_yeosu{position:absolute;left:281px;top:417px; z-index:3;}
+.po_mokpo{position:absolute;left:176px;top:432px; z-index:3;}
+.po_heuksando{position:absolute;left:100px;top:402px; z-index:3;}
+.po_daegu{position:absolute;left:340px;top:332px; z-index:3;}
+.po_andong{position:absolute;left:345px;top:257px; z-index:3;}
+.po_pohang{position:absolute;left:386px;top:296px; z-index:3;}
+.po_uljin{position:absolute;left:402px;top:217px; z-index:3;}
+.po_ulsan{position:absolute;left:417px;top:337px; z-index:3;}
+.po_busan{position:absolute;left:388px;top:378px; z-index:3;}
+.po_changwon{position:absolute;left:352px;top:390px; z-index:3;}
+.po_jeju{position:absolute;left:178px;top:534px; z-index:3;}
+

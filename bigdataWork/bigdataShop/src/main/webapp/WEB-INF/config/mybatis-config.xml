@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="kr.multi.bigdataShop.product.ProductDTO" 
+										alias="product"/>
+		
+		<typeAlias type="kr.multi.bigdataShop.board.BoardDTO"
+			alias="board"/>
+		<typeAlias type="kr.multi.bigdataShop.product.comment.ProductCommentDTO"
+					alias="productcomment"/>
+					<typeAlias type="kr.multi.bigdataShop.product.comment.CommentResultDTO"
+					alias="comment"/>
+		<!-- <typeAlias type="kr.multi.bigdataShop.member.MemberDTO" 
+		alias="member"/>
+		<typeAlias type="kr.multi.bigdataShop.member.login.LoginDTO" 
+		alias="loginmember"/>	 -->
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/board.xml"/>
+		<mapper resource="mapper/product.xml"/>
+		<mapper resource="mapper/productcomment.xml"/>
+		<!-- <mapper resource="mapper/member.xml"/>
+		<mapper resource="mapper/login.xml"/> -->
+	</mappers>
+</configuration>
