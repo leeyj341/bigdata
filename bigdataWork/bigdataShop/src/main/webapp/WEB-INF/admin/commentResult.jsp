@@ -20,13 +20,13 @@
 	<div id="content">
 		<table style="display: inline-block;">
 			<tr>
-				<th>키워드</th>
-				<th>반복횟수</th>
+				<th style="font-size: 15pt; padding-bottom: 10px">키워드</th>
+				<th style="font-size: 15pt; padding-bottom: 10px">반복횟수</th>
 			</tr>
 			<c:forEach var="word" items="${commentResult}" end="9">
-				<tr>
-					<td>${word.word}</td>
-					<td>${word.count_word}</td>
+				<tr style="border-top: 1px solid;">
+					<td style="padding: 8px; padding-right: 50px;'">${word.word}</td>
+					<td style="padding: 8px; padding-right: 50px;">${word.count_word}</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -37,7 +37,7 @@
 		$(document).ready(function() {
 			<% ArrayList<CommentResultDTO> arrList = (ArrayList<CommentResultDTO>)request.getAttribute("commentResult"); %>
 			var words = new Array();
-			<%for(int i=0;i<10;i++){%>
+			<%for(int i=0;i<arrList.size();i++){%>
 			var word = '<%=arrList.get(i).getWord()%>';
 			var count = '<%=arrList.get(i).getCount_word()%>'
 				words[<%=i%>]={text: word, weight: count};

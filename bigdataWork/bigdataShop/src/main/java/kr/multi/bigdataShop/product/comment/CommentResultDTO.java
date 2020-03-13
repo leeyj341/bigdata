@@ -29,6 +29,11 @@ public class CommentResultDTO {
 	public void setCount_word(String count_word) {
 		this.count_word = count_word;
 	}
+
+	@Override
+	public String toString() {
+		return "CommentResultDTO [word=" + word + ", count_word=" + count_word + "]";
+	}
 	
 	
 	

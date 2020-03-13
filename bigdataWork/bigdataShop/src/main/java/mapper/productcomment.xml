@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.multi.bigdataShop.product.comment">
 	<select id="selectCommentResult" resultType="comment">
-		select * from comment_result order by count_word desc
+		select distinct * from comment_result order by to_number(count_word) desc
 	</select>
 	
 	<select id="selectAll" resultType="productcomment" parameterType="String">
