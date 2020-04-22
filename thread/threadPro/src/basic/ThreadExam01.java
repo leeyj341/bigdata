@@ -38,7 +38,7 @@ public class ThreadExam01 {
 
 	public static void main(String[] args) {
 		DigitThread d1 = new DigitThread("digit");
-		AlphaThread a1 = new AlphaThread("a1");
+		AlphaThread a1 = new AlphaThread("alpha");
 		
 		d1.start();
 		a1.start();
