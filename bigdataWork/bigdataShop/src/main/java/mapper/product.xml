@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.multi.bigdataShop.product">
+	<select id="newproduct" resultType="product">
+		<![CDATA[
+			select *
+			from (select TB_PRODUCT.*,
+			      rank() over(order by reg_dtm desc) as myrank
+				  from TB_PRODUCT) rank_table
+			where myrank<=3
+		]]>
+	</select>
+	<select id="hitproduct" resultType="product">
+		<![CDATA[
+			select p.*, sort_table.sumqt
+			from TB_PRODUCT p, (select prd_no,sum(qty) sumqt
+								from TB_ORDER_PRODUCT
+								group by prd_no
+								order by sumqt desc) sort_table
+			where p.prd_no = sort_table.prd_no					
+     			and rownum<=5
+		]]>
+	</select>
+	<select id="listall" resultType="product">
+		select * from tb_product
+	</select>
+	<select id="categorySearch" resultType="product" 
+						parameterType="String">
+		select * from tb_product
+		where category_no=#{category}
+	</select>
+	<select id="read" resultType="product" parameterType="String">
+		select * from tb_product
+		where prd_no=#{prd_no}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

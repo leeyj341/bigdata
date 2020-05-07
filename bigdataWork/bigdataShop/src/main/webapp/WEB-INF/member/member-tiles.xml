@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!--  member -->
+	<definition name="member/login" extends="mainTemplate">
+		<put-attribute name="content" 
+					value="/WEB-INF/member/member_login.jsp"/>
+	</definition>
+	<definition name="member/insert" extends="mainTemplate">
+		<put-attribute name="content" 
+					value="/WEB-INF/member/member_write.jsp"/>
+	</definition>
+	
+	<definition name="member/mypage" extends="securityTemplate">
+		<put-attribute name="content" 
+					value="/WEB-INF/member/mypage.jsp"/>
+	</definition>
+</tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------------
+	base
+----------------------------------------------------------------- */
+#content{
+margin:0;
+padding:0;
+width:100%;
+}
+
+#content.lyt-type-1 .lyt-main,
+#content.lyt-type-2 .lyt-main,
+#content.lyt-type-3 .lyt-main,
+#content.lyt-type-4 .lyt-main,
+#content.lyt-type-5 .lyt-main{
+width:79.1489362%;
+}
+#content.lyt-type-1 .lyt-side,
+#content.lyt-type-2 .lyt-side,
+#content.lyt-type-3 .lyt-side,
+#content.lyt-type-4 .lyt-side,
+#content.lyt-type-5 .lyt-side{
+width:19.787234%;
+}
+
+#content.lyt-type-3 > .lyt-col{
+width:79.1489362%;
+}
+#content.lyt-type-3 > .lyt-col > .lyt-main{
+width:73.655914%;
+}
+#content.lyt-type-3 > .lyt-col > .lyt-side{
+width:25%;
+}
+
+#content.lyt-type-4 > .lyt-main{
+width:auto;
+}
+#content.lyt-type-4 > .lyt-main > .lyt-main{
+width:79.1489362%;
+}
+#content.lyt-type-4 > .lyt-main > .lyt-side{
+width:19.787234%;
+}
+
+#content.lyt-type-5 > .lyt-main > .lyt-main{
+width:73.655914%;
+}
+#content.lyt-type-5 > .lyt-main > .lyt-side{
+width:25%;
+}
+
+/* ----------------------------------------------------------------
+	header
+----------------------------------------------------------------- */
+#header > .lyt-header{
+padding:35px 0 0;
+width:100%;
+}
+#header #nav{
+margin:0;
+}
+#header #nav #nav-global > ul > li{
+width:auto !important;
+}
+
+/* ----------------------------------------------------------------
+	footer
+----------------------------------------------------------------- */
+#footer > .lyt-footer{
+padding:10px 0;
+width:100%;
+}
+#footer .utility{
+margin:-10px 0 10px;
+}
+
+/* ----------------------------------------------------------------
+	Modules
+----------------------------------------------------------------- */
+/* headings
+----------------------------------------------- */
+h2, h3, h4, h5, h6{
+margin:0 0 15px;
+}
+
+/* .tab
+----------------------------------------------- */
+.tab > .tab-list > li > a{
+height:auto !important;
+}
+.tab .tabs{
+margin:0 0 15px;
+}
+
+/* .bnr-list
+----------------------------------------------- */
+.bnr-list > li > a{
+height:auto !important;
+}
+
+/* .layout
+----------------------------------------------- */
+.col-2 > *,
+.col-3 > *,
+.col-4 > *{
+height:auto !important;
+}
+
+.link-list.col-2 > li,
+.link-list.col-3 > li,
+.link-list.col-4 > li{
+height:auto !important;
+}
+
+/* .inquiry
+----------------------------------------------- */
+.inquiry{
+margin:0 0 15px;
+}
+
+/* .info
+----------------------------------------------- */
+.info > table{
+margin:0;
+}
+.info > table th, .info > table td{
+padding-top:10px;
+display:table-cell !important;
+float:none !important;
+width:auto !important;
+}
+.info > table th{
+border-top:1px #ebebeb solid;
+}
+
+/* .drill-down
+----------------------------------------------- */
+.drill-down ol > li > span{
+margin:0 !important;
+}
+.drill-down ol > li > ol{
+margin:0;
+}
+
+/* .drill-down-01
+----------------------------------------------- */
+.drill-down-01 > .tab{
+margin:0;
+}
+.drill-down-01 .select-area > ol{
+margin:0 0 15px;
+}
+
+/* .toggle
+----------------------------------------------- */
+.toggle{
+margin:0 0 15px;
+}

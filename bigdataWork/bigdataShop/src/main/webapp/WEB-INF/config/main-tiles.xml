@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- 템플릿을 정의(main화면 레이아웃 - 사용자페이지 템플릿) -->
+	<definition name="mainTemplate" 
+			template="/WEB-INF/layout/mainLayout.jsp">
+		<put-attribute name="top" value="/WEB-INF/include/top.jsp"/>
+		<put-attribute name="content" 
+		                 value="/WEB-INF/include/content.jsp"/>
+	</definition>
+	<definition name="index" extends="mainTemplate">
+	</definition>
+	
+	<!-- admin페이지 -->
+	<definition name="adminTemplate" 
+			template="/WEB-INF/layout/adminlayout.jsp">
+		<put-attribute name="top" value="/WEB-INF/include/top.jsp"/>
+		<put-attribute name="menu" 
+		                 value="/WEB-INF/include/adminleft.jsp"/>
+		<put-attribute name="content" 
+		                 value="/WEB-INF/include/admincontent.jsp"/>
+	</definition>
+	
+	<!-- security템플릿 -->
+	<definition name="securityTemplate" template="/WEB-INF/layout/adminlayout.jsp">
+		<put-attribute name="top" value="/WEB-INF/include/top.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/include/boardleft.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/board/common_boardlist.jsp" />
+
+	</definition>
+	<definition name="admin/index" extends="adminTemplate">
+	</definition>	
+	<definition name="comment/result" extends="adminTemplate">	
+		<put-attribute name="content" 
+			value="/WEB-INF/admin/commentResult.jsp" />
+	</definition>
+</tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
