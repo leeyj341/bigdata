@@ -3,7 +3,7 @@ package basic;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-//InetAddress - IP¸¦ Ç¥ÇöÇÏ±â À§ÇÑ °´Ã¼
+//InetAddress - IPë¥¼ í‘œí˜„í•˜ê¸° ìœ„í•œ ê°ì²´
 public class InetAddressTest {
 	public static void main(String[] args) {
 		try {
