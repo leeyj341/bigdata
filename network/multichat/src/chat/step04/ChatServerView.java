@@ -1,9 +1,10 @@
-package chat.step03;
+package chat.step04;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -103,7 +104,10 @@ public class ChatServerView extends JFrame {
 			public void run() {
 				try {
 					socket = server.accept();
-					taclientlist.append("사용자 접속!!!\n");
+					//=============1. client가 접속하면 클라이언트의 ip정보를 출력 =============
+					String ip = socket.getInetAddress().getHostAddress();
+					taclientlist.append(ip + " 사용자 접속!!!\n");
+					//==============================================================
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

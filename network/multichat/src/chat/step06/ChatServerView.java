@@ -1,9 +1,15 @@
-package chat.step03;
+package chat.step06;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,14 +26,17 @@ public class ChatServerView extends JFrame {
 	 JButton btnchangeport;
 	 JButton btnstartServer;
 	 JButton btnstop;
-	 //======= 1. 소켓프로그래밍을 하기 위한 객체를 준비 ========
+	 
 	 ServerSocket server;
 	 Socket socket;
-	 //=============================================
 	 
-	/**
-	 * Launch the application.
-	 */
+	 InputStream is;
+	 InputStreamReader ir;
+	 BufferedReader br;
+	 
+	 OutputStream os;
+	 PrintWriter pw;
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,9 +50,6 @@ public class ChatServerView extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public ChatServerView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 673, 513);
@@ -79,7 +85,6 @@ public class ChatServerView extends JFrame {
 		btnstop.addActionListener(new ChatServerListener(this));
 	}
 	
-	//======= 2. 클라이언트의 접속을 기다리면서 서비스를 시작할 수 있는 메서드를 정의 =======
 	public void serverStart(int port) {
 		try {
 			server = new ServerSocket(port);
@@ -94,24 +99,35 @@ public class ChatServerView extends JFrame {
 		}
 		
 	}
-	
-	//======= 3. 사용자 접속을 위한 메서드 =====================================
+
 	public void connection() {
 		Thread thread = new Thread(new Runnable() {
-			
 			@Override
 			public void run() {
-				try {
-					socket = server.accept();
-					taclientlist.append("사용자 접속!!!\n");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				//======= 2. 여러 클라이언트가 접속할 수 있도록 처리 =========
+				while (true) {
+					try {
+						socket = server.accept();
+						String ip = socket.getInetAddress().getHostAddress();
+						taclientlist.append(ip + " 사용자 접속!!!\n");
+						
+						//클라이언트의 연결 부분
+						//=> 클라이언트가 접속하면 클라이언트의 정보를 User객체로 생성해서 
+						//	  독립적인 실행흐름을 가질 수 있도록 Thread로 실행
+						User user = new User(socket, ChatServerView.this);
+						user.start();
+						
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}// end while
+				//===============================================
 			}
 		});
 		thread.start();
 	}
+
+	
 }
 
 

@@ -1,9 +1,15 @@
-package chat.step03;
+package chat.step05;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,14 +26,18 @@ public class ChatServerView extends JFrame {
 	 JButton btnchangeport;
 	 JButton btnstartServer;
 	 JButton btnstop;
-	 //======= 1. 소켓프로그래밍을 하기 위한 객체를 준비 ========
+	 
 	 ServerSocket server;
 	 Socket socket;
-	 //=============================================
+	 //======= 6. 클라이언트와 통신하기 위한 입출력 스트림 변수 선언 ========
+	 InputStream is;
+	 InputStreamReader ir;
+	 BufferedReader br;
 	 
-	/**
-	 * Launch the application.
-	 */
+	 OutputStream os;
+	 PrintWriter pw;
+	 //=================================================
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,9 +51,6 @@ public class ChatServerView extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public ChatServerView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 673, 513);
@@ -79,7 +86,6 @@ public class ChatServerView extends JFrame {
 		btnstop.addActionListener(new ChatServerListener(this));
 	}
 	
-	//======= 2. 클라이언트의 접속을 기다리면서 서비스를 시작할 수 있는 메서드를 정의 =======
 	public void serverStart(int port) {
 		try {
 			server = new ServerSocket(port);
@@ -94,8 +100,7 @@ public class ChatServerView extends JFrame {
 		}
 		
 	}
-	
-	//======= 3. 사용자 접속을 위한 메서드 =====================================
+
 	public void connection() {
 		Thread thread = new Thread(new Runnable() {
 			
@@ -103,7 +108,20 @@ public class ChatServerView extends JFrame {
 			public void run() {
 				try {
 					socket = server.accept();
-					taclientlist.append("사용자 접속!!!\n");
+					String ip = socket.getInetAddress().getHostAddress();
+					taclientlist.append(ip + " 사용자 접속!!!\n");
+					//===== 8. 클라이언트가 접속하면 통신할 수 있도록 스트림얻기 메서드 호출
+					ioWork();
+					//==================================================
+					//===== 9. 클라이언트가 전송한 nickname 출력하는 작업
+					String nickname = br.readLine();
+					//System.out.println("클라이언트가 전송한 nickname 출력: " + nickname);
+					taclientlist.append("*****************" + nickname + "님이 입장 ****************");
+					//==================================================
+					//===== 10. 서버가 클라이언트에게 환영메시지를 전송 =============
+					pw.println("접속을 환영합니다.");
+					//==================================================
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -112,6 +130,25 @@ public class ChatServerView extends JFrame {
 		});
 		thread.start();
 	}
+	
+	//========= 7. 클라이언트와 통신할 수 있도록 소켓으로 부터 input/output 스트림을 얻기
+	public void ioWork() {
+		try {
+			is = socket.getInputStream();
+			ir = new InputStreamReader(is);
+			br = new BufferedReader(ir);
+			
+			os = socket.getOutputStream();
+			pw = new PrintWriter(os, true);
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	//=============================================================
+	
 }
 
 
