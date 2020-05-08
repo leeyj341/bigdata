@@ -36,7 +36,7 @@ public class MyNetClient02 {
 			System.out.println("서버가 전송하는 메시지 2 : " + intdata);
 			
 			//2. 클라이언트 -> 서버
-			dos.writeUTF("이 와중에 민재 한 표 받았어...ㅎ");
+			dos.writeUTF("안녕하세요 서버님 클라이언트입니다.");
 			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();

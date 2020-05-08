@@ -1,9 +1,11 @@
-package chat.step06;
+package chat.step07;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,7 +25,11 @@ public class ChatServerView extends JFrame {
 	 
 	 ServerSocket server;
 	 Socket socket;
-
+	 
+	 //=========== 1. 클라이언트의 정보를 저장할 변수 선언 =============
+	 Vector<User> userList = new Vector<User>();
+	 //====================================================
+	 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -91,7 +97,6 @@ public class ChatServerView extends JFrame {
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				//======= 2. 여러 클라이언트가 접속할 수 있도록 처리 =========
 				while (true) {
 					try {
 						socket = server.accept();
@@ -101,14 +106,15 @@ public class ChatServerView extends JFrame {
 						//클라이언트의 연결 부분
 						//=> 클라이언트가 접속하면 클라이언트의 정보를 User객체로 생성해서 
 						//	  독립적인 실행흐름을 가질 수 있도록 Thread로 실행
-						User user = new User(socket, ChatServerView.this);
+						//========= 5. 새로운 클라이언트가 접속하면 기존 사용자의 정보를 넘길 수 있도록 수정 =========
+						User user = new User(socket, ChatServerView.this, userList);
 						user.start();
+						//=====================================================================
 						
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}// end while
-				//===============================================
 			}
 		});
 		thread.start();
